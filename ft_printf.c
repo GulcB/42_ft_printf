@@ -74,7 +74,7 @@ int	ft_printf(const char *str, ...)
 		{
 			i++;
 			if (str[i] == '\0')
-				break ;
+				return (count);
 			count += ft_type_check2(str[i], arg);
 		}
 		else
