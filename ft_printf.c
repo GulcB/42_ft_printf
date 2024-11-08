@@ -27,7 +27,7 @@ static int	ft_type_check(char type, va_list arg)
 	{
 		ptr = va_arg(arg, unsigned long);
 		if (ptr == (unsigned long) NULL)
-			ptr += ft_putstr("(nil)");
+			count += ft_putstr("(nil)");
 		else
 		{
 			count += ft_putstr("0x");
@@ -75,8 +75,6 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			i++;
-			while (str[i] == ' ' && str[i])
-				i++;
 			count += ft_type_check2(str[i], arg);
 		}
 		else
