@@ -6,58 +6,44 @@
 /*   By: gbodur <gbodur@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 16:39:35 by gbodur            #+#    #+#             */
-/*   Updated: 2024/11/08 13:30:31 by gbodur           ###   ########.fr       */
+/*   Updated: 2024/11/08 14:09:51 by gbodur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_hex(unsigned int x, int b)
+int	ft_print_hex(unsigned long num, int is_uppercase)
 {
-	int	i;
+	int		count;
+	char	*base;
 
-	i = 0;
-	if (x >= 16)
-		i += ft_hex(x / 16, b);
-	if ((x % 16) < 10)
-		i += ft_putchar((x % 16) + '0');
+	count = 0;
+	if (is_uppercase)
+		base = "0123456789ABCDEF";
 	else
-	{
-		if (b == 0)
-			i += ft_putchar((x % 16) + 87);
-		else
-			i += ft_putchar((x % 16) + 55);
-	}
-	return (i);
-}
-
-int	ft_ptr(unsigned long p)
-{
-	int	i;
-
-	i = 0;
-	if (p >= 16)
-		i += ft_ptr(p / 16);
-	if ((p % 16) < 10)
-		i += ft_putchar((p % 16) + '0');
-	else
-		i += ft_putchar((p % 16) + 87);
-	return (i);
+		base = "0123456789abcdef";
+	if (num >= 16)
+		count += ft_print_hex(num / 16, is_uppercase);
+	count += ft_putchar(base[num % 16]);
+	return (count);
 }
 
 int	ft_uns(unsigned int u)
 {
-	int	i;
+	char	buffer[10];
+	int		i;
+	int		count;
 
-	i = 0;
 	if (u == 0)
-		i += ft_putchar(u + '0');
-	else if (u > 0 && u <= 9)
-		i += ft_putchar(u + '0');
-	else
+		return (ft_putchar('0'));
+	i = 0;
+	while (u > 0)
 	{
-		i += ft_uns(u / 10);
-		i += ft_uns(u % 10);
+		buffer[i++] = (u % 10) + '0';
+		u /= 10;
 	}
-	return (i);
+	count = i;
+	while (--i >= 0)
+		ft_putchar(buffer[i]);
+	return (count);
 }
