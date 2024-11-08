@@ -33,7 +33,7 @@ int	ft_putstr(char *str)
 	return (i);
 }
 
-int	ft_putnbr(int nb)
+int	ft_putnbr(long nb)
 {
 	int	i;
 
