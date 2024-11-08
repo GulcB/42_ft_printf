@@ -12,9 +12,6 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 
-bonus: $(B_OBJS)
-	$(AR) $(NAME) $(B_OBJS)
-
 clean:
 	$(RM) $(OBJS) $(B_OBJS)
 
@@ -23,4 +20,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all re clean fclean bonus
+.PHONY: all re clean fclean
