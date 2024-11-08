@@ -15,13 +15,13 @@
 
 # include <stdarg.h>
 # include <stdlib.h>
+#include <unistd.h>
 
 int	ft_printf(const char *str, ...);
 int	ft_putchar(char c);
 int	ft_putstr(char *str);
 int	ft_putnbr(int nb);
 int	ft_uns(unsigned int u);
-int	ft_ptr(unsigned long p);
-int	ft_hex(unsigned int x, int b);
+int	ft_print_hex(unsigned long num, int is_uppercase);
 
 #endif
