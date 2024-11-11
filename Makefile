@@ -13,10 +13,10 @@ $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 
 clean:
-	$(RM) $(OBJS) $(B_OBJS)
+	$(RM) $(OBJS)
 
 fclean: clean
-	$(RM) $(NAME) $(OBJS) $(B_OBJS)
+	$(RM) $(NAME)
 
 re: fclean all
 
